@@ -99,6 +99,24 @@ namespace ReturnMultipleValuesFromAMethod
         }
         #endregion
 
+        #region "Method for returning multiple values by passing a object of a class as an argument"
+
+        //Method for returning multiple values by passing a object as an argument
+        static void DividedResultByPassingObject(int numberOne, int numberTwo, ClsDividedInfo clsDividedInfo)
+        {
+            if (numberOne >= numberTwo)
+            {
+                clsDividedInfo.Remainder = numberOne % numberTwo;
+                clsDividedInfo.Quotient = numberOne / numberTwo;
+            }
+            else
+            {
+                clsDividedInfo.Remainder = numberTwo % numberOne;
+                clsDividedInfo.Quotient = numberTwo / numberOne;
+            }
+        }
+        #endregion
+
         static void Main(string[] args)
         {
             //Calling method & get result by usign OUT keyword;
@@ -117,7 +135,12 @@ namespace ReturnMultipleValuesFromAMethod
 
             //Calling method & get result by usign Class;
             ClsDividedInfo dInfo = DividedResultUsingClass(7, 2);
-            Console.WriteLine("4. Using class:\n---------------\nThe quotient value is: {0} \nThe remainder value is: {1}", dInfo.Quotient, dInfo.Remainder);
+            Console.WriteLine("4. Using class:\n---------------\nThe quotient value is: {0} \nThe remainder value is: {1}", dInfo.Quotient, dInfo.Remainder + "\n-------------------------------------");
+
+            //Calling method & get result by passing a object of a Class as an argument;
+            ClsDividedInfo clsDivideInfo = new ClsDividedInfo();
+            DividedResultByPassingObject(7, 2, clsDivideInfo);
+            Console.WriteLine("5. By passing a object as an argument:\n-------------------------------------\nThe quotient value is: {0} \nThe remainder value is: {1}", clsDivideInfo.Quotient, clsDivideInfo.Remainder);
 
             Console.ReadKey();
         }
