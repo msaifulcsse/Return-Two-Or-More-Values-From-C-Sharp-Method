@@ -8,8 +8,8 @@ namespace ReturnMultipleValuesFromAMethod
 {
     public class Program
     {
-        #region "Method for returning multiple values using OUT keyword"
-        static int DividedResultUsingOutKeyword(int numberOne, int numberTwo, out int remainder)
+        #region "1. Method for returning multiple values using OUT keyword"
+        private static int DividedResultUsingOutKeyword(int numberOne, int numberTwo, out int remainder)
         {
             int quotient = 0;
             if (numberOne >= numberTwo)
@@ -27,8 +27,8 @@ namespace ReturnMultipleValuesFromAMethod
         }
         #endregion
 
-        #region "Method for returning multiple values using REF keyword"
-        static void DividedResultUsingRefKeyword(int numberOne, int numberTwo, ref int quotient, ref int remainder)
+        #region "2. Method for returning multiple values using REF keyword"
+        private static void DividedResultUsingRefKeyword(int numberOne, int numberTwo, ref int quotient, ref int remainder)
         {
             if (numberOne >= numberTwo)
             {
@@ -43,7 +43,7 @@ namespace ReturnMultipleValuesFromAMethod
         }
         #endregion
 
-        #region "Declared a struct & a Method for returning multiple values using structures"
+        #region "3. Declared a struct & a Method for returning multiple values using structures"
         //Structure declaration
         struct DividedInfo
         {
@@ -52,7 +52,7 @@ namespace ReturnMultipleValuesFromAMethod
         }
 
         //Method for returning multiple values using Structures
-        static DividedInfo DividedResultUsingStructure(int numberOne, int numberTwo)
+        private static DividedInfo DividedResultUsingStructure(int numberOne, int numberTwo)
         {
             DividedInfo dInfo = new DividedInfo();
 
@@ -71,7 +71,7 @@ namespace ReturnMultipleValuesFromAMethod
         }
         #endregion
 
-        #region "Declared a class & a Method for returning multiple values using classes"
+        #region "4. Declared a class & a Method for returning multiple values using classes"
         //CLass declaration
         class ClsDividedInfo
         {
@@ -80,7 +80,7 @@ namespace ReturnMultipleValuesFromAMethod
         }
 
         //Method for returning multiple values using Structures
-        static ClsDividedInfo DividedResultUsingClass(int numberOne, int numberTwo)
+        private static ClsDividedInfo DividedResultUsingClass(int numberOne, int numberTwo)
         {
             ClsDividedInfo dInfo = new ClsDividedInfo();
 
@@ -99,10 +99,10 @@ namespace ReturnMultipleValuesFromAMethod
         }
         #endregion
 
-        #region "Method for returning multiple values by passing a object of a class as an argument"
+        #region "5. Method for returning multiple values by passing a object of a class as an argument"
 
         //Method for returning multiple values by passing a object as an argument
-        static void DividedResultByPassingObject(int numberOne, int numberTwo, ClsDividedInfo clsDividedInfo)
+        private static void DividedResultByPassingObject(int numberOne, int numberTwo, ClsDividedInfo clsDividedInfo)
         {
             if (numberOne >= numberTwo)
             {
@@ -117,8 +117,8 @@ namespace ReturnMultipleValuesFromAMethod
         }
         #endregion
 
-        #region "Method for returning multiple values using KeyValue Pair"
-        static KeyValuePair<int, int> DividedResultUsingKeyValuePair(int numberOne, int numberTwo)
+        #region "6. Method for returning multiple values using KeyValue Pair"
+        private static KeyValuePair<int, int> DividedResultUsingKeyValuePair(int numberOne, int numberTwo)
         {
             var keyValuePair = new KeyValuePair<int, int>();
 
@@ -134,6 +134,24 @@ namespace ReturnMultipleValuesFromAMethod
         }
         #endregion
 
+        #region "7. Method for returning multiple values using Tuple"
+        private static Tuple<int, int> DividedResultUsingTuple(int numberOne, int numberTwo)
+        {
+            var tuple = new Tuple<int, int>(0,0);
+
+            if (numberOne >= numberTwo)
+            {
+                tuple = new Tuple<int, int>(numberOne / numberTwo, numberOne % numberTwo);
+            }
+            else
+            {
+                tuple = new Tuple<int, int>(numberTwo / numberOne, numberTwo % numberOne);
+            }
+            return tuple;
+        }
+        #endregion
+
+        //Maind method
         static void Main(string[] args)
         {
             //Calling method & get result by usign OUT keyword;
@@ -161,7 +179,11 @@ namespace ReturnMultipleValuesFromAMethod
 
             //Calling method & get result using KeyValue Pair;
             var dividedResult = DividedResultUsingKeyValuePair(7, 2);
-            Console.WriteLine("6. Using KeyValue Pair:\n-----------------------\nThe quotient value is: {0} \nThe remainder value is: {1}", dividedResult.Key, dividedResult.Value);
+            Console.WriteLine("6. Using KeyValue Pair:\n-----------------------\nThe quotient value is: {0} \nThe remainder value is: {1}", dividedResult.Key, dividedResult.Value + "\n---------------");
+
+            //Calling method & get result using Tuple;
+            var dividedInfo = DividedResultUsingTuple(7, 2);
+            Console.WriteLine("7. Using Tuple:\n---------------\nThe quotient value is: {0} \nThe remainder value is: {1}", dividedInfo.Item1, dividedInfo.Item2);
 
             Console.ReadKey();
         }
