@@ -117,6 +117,23 @@ namespace ReturnMultipleValuesFromAMethod
         }
         #endregion
 
+        #region "Method for returning multiple values using KeyValue Pair"
+        static KeyValuePair<int, int> DividedResultUsingKeyValuePair(int numberOne, int numberTwo)
+        {
+            var keyValuePair = new KeyValuePair<int, int>();
+
+            if (numberOne >= numberTwo)
+            {
+                keyValuePair = new KeyValuePair<int, int>(numberOne / numberTwo, numberOne % numberTwo);
+            }
+            else
+            {
+                keyValuePair = new KeyValuePair<int, int>(numberTwo / numberOne, numberTwo % numberOne);
+            }
+            return keyValuePair;
+        }
+        #endregion
+
         static void Main(string[] args)
         {
             //Calling method & get result by usign OUT keyword;
@@ -140,7 +157,11 @@ namespace ReturnMultipleValuesFromAMethod
             //Calling method & get result by passing a object of a Class as an argument;
             ClsDividedInfo clsDivideInfo = new ClsDividedInfo();
             DividedResultByPassingObject(7, 2, clsDivideInfo);
-            Console.WriteLine("5. By passing a object as an argument:\n-------------------------------------\nThe quotient value is: {0} \nThe remainder value is: {1}", clsDivideInfo.Quotient, clsDivideInfo.Remainder);
+            Console.WriteLine("5. By passing a object as an argument:\n-------------------------------------\nThe quotient value is: {0} \nThe remainder value is: {1}", clsDivideInfo.Quotient, clsDivideInfo.Remainder + "\n-----------------------");
+
+            //Calling method & get result using KeyValue Pair;
+            var dividedResult = DividedResultUsingKeyValuePair(7, 2);
+            Console.WriteLine("6. Using KeyValue Pair:\n-----------------------\nThe quotient value is: {0} \nThe remainder value is: {1}", dividedResult.Key, dividedResult.Value);
 
             Console.ReadKey();
         }
