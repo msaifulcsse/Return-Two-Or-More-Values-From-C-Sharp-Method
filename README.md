@@ -7,4 +7,7 @@ How way we can return multiple values from a c# method, represented here all tho
 3. Use of **structures**.
 4. Use of **classes**.
 
+### We have one more way to do this task ###
+5. By **passing a object** of a class as an argument.
+
 However let's discussed through coding, code with all possible ways are commited this directory. Thanks for being with coding.
