@@ -26,12 +26,33 @@ namespace ReturnMultipleValuesFromAMethod
             return quotient;
         }
 
+        //Method for returning multiple values using REF keyword
+        static void DividedResultUsingRefKeyword(int numberOne, int numberTwo, ref int quotient, ref int remainder)
+        {
+            if (numberOne >= numberTwo)
+            {
+                remainder = numberOne % numberTwo;
+                quotient = numberOne / numberTwo;
+            }
+            else
+            {
+                remainder = numberTwo % numberOne;
+                quotient = numberTwo / numberOne;
+            }
+        }
+
         static void Main(string[] args)
         {
             //Calling method & get result by usign OUT keyword;
-            int remainder = 0;
-            int quotient = DividedResultUsingOutKeyword(7, 2, out remainder);
+            //int remainder = 0;
+            //int quotient = DividedResultUsingOutKeyword(7, 2, out remainder);
+            //Console.WriteLine("The Quotient Value Is: {0} \nThe Remainder Value Is: {1}", quotient, remainder);
+
+            //Calling method & get result by usign REF keyword;
+            int quotient = 0, remainder = 0;
+            DividedResultUsingRefKeyword(7, 2, ref quotient, ref remainder);
             Console.WriteLine("The Quotient Value Is: {0} \nThe Remainder Value Is: {1}", quotient, remainder);
+
             Console.ReadKey();
         }
     }
